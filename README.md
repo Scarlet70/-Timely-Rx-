@@ -1,2 +1,2 @@
-# -Timely-Rx-
+Timely-Rx
 A Medication Reminder App 
