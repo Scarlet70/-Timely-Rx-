@@ -37,7 +37,10 @@ const medNoBtn = document.querySelector("#no");
 
 // Sidebar / misc
 const closeBtn = document.getElementById("close-btn");
+const showAsideNavigation = document.getElementById("show-aside-navigation");
+const closeBtnTwo = document.getElementById("close-btn-two");
 const sideBar = document.getElementById("sidebar");
+const asideNavigation = document.getElementById("aside-navigation");
 const activeBubble = document.getElementById("active");
 const logoutBtn = document.getElementById("logout-button");
 
@@ -229,6 +232,25 @@ function loadRemindersFromStorage() {
 }
 
 //MAIN LOGIC
+
+//ASIDE NAVIGATION ANIMATION SCRIPT
+let scrollTimeout;
+
+window.addEventListener("scroll", () => {
+	showAsideNavigation.classList.add("hidden");
+	sideBar.classList.add("hidden");
+
+	clearTimeout(scrollTimeout);
+
+	scrollTimeout = setTimeout(() => {
+		showAsideNavigation.classList.remove("hidden");
+		sideBar.classList.remove("hidden");
+	}, 500);
+});
+
+//SIDEBAR SCROLL VISIBILITY
+
+//CONTINUED MAIN LOGIC
 
 function addReminder() {
 	const name = medicationNameInput.value.trim();
@@ -449,6 +471,14 @@ closeBtn.addEventListener("click", () => {
 
 logoutBtn.addEventListener("click", () => {
 	window.location.href = "timelylogin.html";
+});
+
+showAsideNavigation.addEventListener("click", () => {
+	asideNavigation.classList.add("visible");
+});
+
+closeBtnTwo.addEventListener("click", () => {
+	asideNavigation.classList.remove("visible");
 });
 
 //MIDNIGHT RESET
